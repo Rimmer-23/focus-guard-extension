@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { width: 300px; padding: 15px; font-family: 'Segoe UI', sans-serif; text-align: center; color: #333; }
+    h2 { margin-top: 0; font-size: 18px; }
+    
+    /* Styles for sections */
+    .switch-container { margin: 15px 0; padding: 10px; background: #f8f9fa; border-radius: 8px; border: 1px solid #e9ecef; }
+    .timer-container { margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee; }
+    .settings-container { margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px; text-align: left; }
+
+    /* Inputs and Buttons */
+    input[type="number"] { width: 50px; padding: 5px; border-radius: 4px; border: 1px solid #ccc; }
+    textarea { width: 100%; margin-top: 5px; box-sizing: border-box; resize: vertical; padding: 5px; font-family: monospace; }
+    
+    button { 
+      background: #007bff; color: white; border: none; padding: 6px 12px; 
+      border-radius: 4px; cursor: pointer; margin-left: 5px; font-size: 14px;
+    }
+    button:hover { background: #0056b3; }
+    
+    /* Special button styles */
+    #stopTimer { background: #dc3545; }
+    #stopTimer:hover { background: #c82333; }
+    #saveSites { width: 100%; margin-top: 8px; background: #28a745; }
+    #saveSites:hover { background: #218838; }
+
+    #timerDisplay { font-size: 28px; font-weight: bold; margin: 10px 0; color: #495057; }
+    label { cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  </style>
+</head>
+<body>
+  <h2>🛡️ Focus Guard</h2>
+
+  <div class="switch-container">
+    <label>
+      <input type="checkbox" id="toggleBlock"> 
+      <strong>Manual Block</strong>
+    </label>
+    <p id="status" style="margin: 5px 0 0 0; font-size: 12px;">Waiting...</p>
+  </div>
+
+  <div class="timer-container">
+    <div id="setupDiv">
+      <input type="number" id="minutesInput" value="25" min="1" max="120"> min
+      <button id="startTimer">Start Focus</button>
+    </div>
+    
+    <div id="countdownDiv" style="display: none;">
+      <div id="timerDisplay">00:00</div>
+      <button id="stopTimer">Stop</button>
+    </div>
+  </div>
+
+  <div class="settings-container">
+    <label for="siteList" style="font-size: 12px; font-weight: bold; color: #555;">⛔ Blocked Sites (comma separated):</label>
+    <textarea id="siteList" rows="3" placeholder="youtube.com, twitter.com, vk.com"></textarea>
+    <button id="saveSites">Save List</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
